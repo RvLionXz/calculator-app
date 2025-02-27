@@ -13,12 +13,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int input = 0;
+  String input = "";
+
+  void inputAngka(String angka) {
+    setState(() {
+      input += angka;
+    });
+  }
 
   //controller
-  final TextEditingController _controller = TextEditingController();
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,13 +40,12 @@ class _MyAppState extends State<MyApp> {
             //Root Column
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              TextField(
-                controller: _controller,
-                readOnly: true,
-                decoration: InputDecoration(
-                  hintText: "0",
-                  hintStyle: TextStyle(fontSize: 50, color: Colors.blue),
-                  border: OutlineInputBorder(),
+              Text(
+                input,
+                style: TextStyle(
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
                 ),
               ),
               Row(
@@ -55,22 +57,29 @@ class _MyAppState extends State<MyApp> {
                       CustomButton(
                         text: "AC",
                         onPressed: () {
-                          ;
+                          setState(() {
+                            input = "";
+                          });
                         },
                       ),
                       CustomButton(
                         text: "7",
                         onPressed: () {
-                          ;
+                          inputAngka("7");
                         },
                       ),
                       CustomButton(
                         text: "4",
                         onPressed: () {
-                          ;
+                          inputAngka("4");
                         },
                       ),
-                      CustomButton(text: "1", onPressed: () {}),
+                      CustomButton(
+                        text: "1",
+                        onPressed: () {
+                          inputAngka("1");
+                        },
+                      ),
                       CustomButton(text: ".", onPressed: () {}),
                     ],
                   ),
@@ -86,17 +95,27 @@ class _MyAppState extends State<MyApp> {
                       CustomButton(
                         text: "8",
                         onPressed: () {
-                          ;
+                          inputAngka("8");
                         },
                       ),
                       CustomButton(
                         text: "5",
                         onPressed: () {
-                          ;
+                          inputAngka("5");
                         },
                       ),
-                      CustomButton(text: "2", onPressed: () {}),
-                      CustomButton(text: "0", onPressed: () {}),
+                      CustomButton(
+                        text: "2",
+                        onPressed: () {
+                          inputAngka("2");
+                        },
+                      ),
+                      CustomButton(
+                        text: "0",
+                        onPressed: () {
+                          inputAngka("0");
+                        },
+                      ),
                     ],
                   ),
                   Column(
@@ -111,19 +130,19 @@ class _MyAppState extends State<MyApp> {
                       CustomButton(
                         text: "9",
                         onPressed: () {
-                          ;
+                          inputAngka("9");
                         },
                       ),
                       CustomButton(
                         text: "6",
                         onPressed: () {
-                          ;
+                          inputAngka("6");
                         },
                       ),
                       CustomButton(
                         text: "3",
                         onPressed: () {
-                          ;
+                          inputAngka("3");
                         },
                       ),
                       CustomButton(
